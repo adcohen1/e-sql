@@ -1,0 +1,86 @@
+/* Contenedor centrado */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #caf0f8;
+  padding: 20px;
+}
+
+/* Caja del formulario */
+.auth-box {
+  background: white;
+  width: 100%;
+  max-width: 380px;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #333;
+}
+
+/* Inputs */
+.auth-box label {
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.auth-box input {
+  width: 100%;
+  background: #929292;
+  padding: 10px;
+  border: 2px solid #929292;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box
+}
+
+.auth-box input:focus {
+  border-color: #00B4D8;
+}
+
+/* Botón */
+.auth-btn {
+  width: 100%;
+  background: #4a90e2;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.auth-btn:hover {
+  background: #357ab8;
+}
+
+/* Texto inferior */
+.auth-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.auth-link a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
