@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
+import axios from "axios";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -8,10 +9,31 @@ export default function Signup() {
   const [codigo, setCodigo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [mesagge, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup:", { name, lname, email, password });
+    setMessage("");
+    //console.log("Signup:", { name, lname, email, password });
+
+    try {
+      const response = await axios.post(
+        "https://roble-api.openlab.uninorte.edu.co/auth/:dbName",
+        {
+          name: name,
+          lname: lname,
+          codigo: codigo,
+          email: email,
+          password: password,
+        }
+      );
+
+      setMessage(response.data.mesagge + ". Ahora puedes iniciar sesión.");
+    } catch (error) {
+      const errorMsg =
+        error.response?.data?.detail || "Error al conectar con el servidor.";
+      setMessage(errorMsg);
+    }
   };
 
   return (
@@ -46,10 +68,11 @@ export default function Signup() {
         </div>
 
         <label>Código estudiantil</label>
-        <input type="text"
-        value={codigo}
-        onChange={(e) => setCodigo(e.target.value)}
-        required
+        <input
+          type="text"
+          value={codigo}
+          onChange={(e) => setCodigo(e.target.value)}
+          required
         />
 
         <label>Correo electrónico</label>
@@ -57,6 +80,7 @@ export default function Signup() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="ejemplo123@uninorte.edu.co"
           required
         />
 
@@ -71,6 +95,7 @@ export default function Signup() {
         <button type="submit" className="auth-btn">
           Registrarse
         </button>
+        <p style={{ color: "black" }}>{mesagge}</p>
 
         <p className="auth-link">
           ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
